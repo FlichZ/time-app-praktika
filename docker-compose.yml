@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: ./api
+    container_name: time-app-api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/usr/src/app
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: time-app-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/src/app
+    restart: always
+
+networks:
+  default:
+    name: time-app-network
